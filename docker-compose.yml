@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks: 
+  dev_network: 
+    driver: bridge
+    
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    ports:
+    - "15672:15672"
+    - "5672:5672"
+    networks: 
+    - dev_network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: "1024M"
+     
